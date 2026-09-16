@@ -45,7 +45,7 @@ Create a second DataFrame named `VisFemale` containing students whose Hometown i
 
 `Name`, `Track`, `GEAS`, `Electronics`, `Average`. 
 
-Display VisFemale. Then display only the rows of VisFemale whose Average is at least 60. Do not overwrite VisFemale when performing this second filter.
+Display `VisFemale`. Then display only the rows of `VisFemale` whose `Average` is at least 60. Do not overwrite `VisFemale` when performing this second filter.
 
 ---
 
@@ -76,7 +76,74 @@ display(VisFemale.loc[(VisFemale['Average'] >= 60)])
 
 # C. CATEGORY-AVERAGE VISUALIZATION
 
+Examine how the recorded `Average` differs across the three categorical features `Track`, `Gender`, and `Hometown`.
+
+a. For each feature, compute the mean of `Average` for every category using Pandas.
+
+b. Display the three summary tables.
+
+c. Create one figure containing three bar charts: mean `Average` by `Track`, by `Gender`, and by `Hometown`.
+
+d. Below the figure, write three concise statements identifying the category with the highest sample mean for each feature.
+
+---
+
+```python
+import matplotlib.pyplot as plt
+
+board2['Average'] = (board2['Math'] + board2['Electronics'] + board2['GEAS'] + board2['Communication']) / 4
+```
+
+`import matplotlib.pyplot as plt` imports Matplotlib's `pyplot` and gives it the shorter name `plt`. `board2['Average'] = ...` adds the Math, Electronics, GEAS, and Communication scores together and divides the total by 4 to calculate the average for each student.
+
+```python
+track_mean = board2.groupby('Track')['Average'].mean().reset_index()
+gender_mean = board2.groupby('Gender')['Average'].mean().reset_index()
+hometown_mean = board2.groupby('Hometown')['Average'].mean().reset_index()
+```
+
+`track_mean = board2.groupby('Track')['Average'].mean().reset_index()` groups the students by Track and calculates the mean `Average` for each track. 
+
+`gender_mean = board2.groupby('Gender')['Average'].mean().reset_index()` groups the students by Gender and calculates the mean `Average` for each gender. 
+
+`hometown_mean = board2.groupby('Hometown')['Average'].mean().reset_index()` groups the students by Hometown and calculates the mean `Average` for each hometown. 
+
+`reset_index()` changes the grouped results back into normal DataFrames.
+
+```python
+display(track_mean)
+display(gender_mean)
+display(hometown_mean)
+```
+
+`display(track_mean)` displays the summary table for Track. `display(gender_mean)` displays the summary table for Gender. `display(hometown_mean)` displays the summary table for Hometown.
+
+```python
+plt.figure(figsize=(20, 4))
+
+plt.bar(track_mean['Track'], track_mean['Average'])
+plt.bar(gender_mean['Gender'], gender_mean['Average'])
+plt.bar(hometown_mean['Hometown'], hometown_mean['Average'])
+
+plt.show()
+```
+
+`plt.figure(figsize=(20, 4))` creates a figure that is 20 inches wide and 4 inches tall. `plt.bar(track_mean['Track'], track_mean['Average'])` creates a bar chart using the Track categories and their mean Average. `plt.bar(gender_mean['Gender'], gender_mean['Average'])` creates a bar chart using the Gender categories and their mean Average. `plt.bar(hometown_mean['Hometown'], hometown_mean['Average'])` creates a bar chart using the Hometown categories and their mean Average. `plt.show()` displays the figure.
+
+---
+
+Thank you for reading!
+
+For the main program for Programming Assignment 4 click this link
+
+https://github.com/aldouzerobinrelos-web/Relos_ECE2112_PA4/blob/main/Relos_ECE2112_PA4.ipynb
+
+then download, then open on Google Colab or Jupyter Notebook, and run every cell.
+
 **Readme File History:**
 
 September 14 2026 - started initial readme file
+
 September 15 2026 - started and finished the 1st and 2nd problems
+
+September 16 2026 - started and finished 3rd problem, added link to programming assignment 4
