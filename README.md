@@ -15,12 +15,12 @@ Display the resulting DataFrame and its number of rows. Both filtering condition
 ```python
 import pandas as pd      
 
-board2 = pd.read_csv('board2.csv')      
+board2 = pd.read_excel('board2.xlsx')    
 
 board2["Average"] = ((board2["Math"]+board2["Electronics"])/2)
 ```
 
-`import pandas as pd` imports Pandas and gives it the shorter name `pd`. `board2 = pd.read_csv('board2.csv')` reads the CSV file and stores the data in `board2`. `board2["Average"] = ((board2["Math"]+board2["Electronics"])/2)` calculates the average of Math and Electronics and stores it in the `Average` column.
+`import pandas as pd` imports Pandas and gives it the shorter name `pd`. `board2 = pd.read_excel('board2.xlsx')` reads the Excel file and stores the data in `board2`. `board2["Average"] = ((board2["Math"]+board2["Electronics"])/2)` calculates the average of Math and Electronics and stores it in the `Average` column.
 
 ```python
 VisComm = pd.DataFrame(board2.loc[
@@ -147,3 +147,5 @@ September 14 2026 - started initial readme file
 September 15 2026 - started and finished the 1st and 2nd problems
 
 September 16 2026 - started and finished 3rd problem, added link to programming assignment 4
+
+September 17 2026 - changed csv file back to excel file and deleted board2.csv from repository
