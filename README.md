@@ -121,14 +121,23 @@ display(hometown_mean)
 ```python
 plt.figure(figsize=(20, 4))
 
+plt.subplot(1, 3, 1)
 plt.bar(track_mean['Track'], track_mean['Average'])
-plt.bar(gender_mean['Gender'], gender_mean['Average'])
-plt.bar(hometown_mean['Hometown'], hometown_mean['Average'])
+plt.title('Track')
 
+plt.subplot(1, 3, 2)
+plt.bar(gender_mean['Gender'], gender_mean['Average'])
+plt.title('Gender')
+
+plt.subplot(1, 3, 3)
+plt.bar(hometown_mean['Hometown'], hometown_mean['Average'])
+plt.title('Hometown')
+
+plt.tight_layout()
 plt.show()
 ```
 
-`plt.figure(figsize=(20, 4))` creates a figure that is 20 inches wide and 4 inches tall. `plt.bar(track_mean['Track'], track_mean['Average'])` creates a bar chart using the Track categories and their mean Average. `plt.bar(gender_mean['Gender'], gender_mean['Average'])` creates a bar chart using the Gender categories and their mean Average. `plt.bar(hometown_mean['Hometown'], hometown_mean['Average'])` creates a bar chart using the Hometown categories and their mean Average. `plt.show()` displays the figure.
+`plt.figure()` creates the figure, while `plt.subplot()` divides it into three charts. Each `plt.bar()` creates a bar chart using the category means. `plt.title()` adds a title to each chart. `plt.tight_layout()` arranges the charts neatly, and `plt.show()` displays them.
 
 ---
 
@@ -148,4 +157,4 @@ September 15 2026 - started and finished the 1st and 2nd problems
 
 September 16 2026 - started and finished 3rd problem, added link to programming assignment 4
 
-September 17 2026 - changed csv file back to excel file and deleted board2.csv from repository
+September 17 2026 - changed csv file back to excel file and deleted board2.csv from repository, redid 3rd problem bar graphs for all 3
